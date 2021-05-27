@@ -5,11 +5,9 @@ Home: https://github.com/daattali/ddpcr
 
 Package license: MIT
 
-Feedstock license: BSD 3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-ddpcr-feedstock/blob/master/LICENSE.txt)
 
 Summary: An interface to explore, analyze, and visualize droplet digital PCR (ddPCR) data in R. This is the first non-proprietary software for analyzing two-channel ddPCR data. An interactive tool was also created and is available online to facilitate this analysis for anyone who is not comfortable with using R.
-
-
 
 Current build status
 ====================
@@ -38,6 +36,7 @@ Installing `r-ddpcr` from the `conda-forge` channel can be achieved by adding `c
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
 Once the `conda-forge` channel has been enabled, `r-ddpcr` can be installed with:
@@ -108,9 +107,9 @@ build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string).
  * If the version of a package **is** being increased, please remember to return
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string)
    back to 0.
 
 Feedstock Maintainers
