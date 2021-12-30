@@ -1,4 +1,4 @@
-{% set version = "1.15" %}
+{% set version = '1.15' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,16 +7,15 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: ddpcr_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/ddpcr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ddpcr/ddpcr_{{ version }}.tar.gz
   sha256: 9ad78906d8aec5ca0f57f403d15a2f09e913a726686515cd4b1d8fa7a6990213
 
 build:
+  merge_build_host: True  # [win]
+  number: 1
   noarch: generic
-  merge_build_host: true  # [win]
-  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -24,6 +23,7 @@ build:
 requirements:
   build:
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - r-dt >=0.2
@@ -36,6 +36,7 @@ requirements:
     - r-readr >=0.1.0
     - r-shiny >=0.11.0
     - r-shinyjs >=0.4.0
+    - r-tibble
   run:
     - r-base
     - r-dt >=0.2
@@ -48,6 +49,7 @@ requirements:
     - r-readr >=0.1.0
     - r-shiny >=0.11.0
     - r-shinyjs >=0.4.0
+    - r-tibble
 
 test:
   commands:
@@ -57,16 +59,36 @@ test:
 about:
   home: https://github.com/daattali/ddpcr
   license: MIT
-  license_file: LICENSE
-  summary: An interface to explore, analyze, and visualize droplet digital PCR (ddPCR) data in R. This is the first non-proprietary software for analyzing two-channel ddPCR data. An interactive tool was also created and is available online to facilitate this analysis for anyone who is not comfortable with using R.
+  summary: An interface to explore, analyze, and visualize droplet digital PCR (ddPCR) data in
+    R. This is the first non-proprietary software for analyzing two-channel ddPCR data.
+    An interactive tool was also created and is available online to facilitate this
+    analysis for anyone who is not comfortable with using R.
   license_family: MIT
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - LICENSE
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
+
+# Package: ddpcr
+# Title: Analysis and Visualization of Droplet Digital PCR in R and on the Web
+# Version: 1.15
+# Authors@R: c( person("Dean", "Attali", email = "daattali@gmail.com", role = c("aut", "cre")) )
+# Description: An interface to explore, analyze, and visualize droplet digital PCR (ddPCR) data in R. This is the first non-proprietary software for analyzing two-channel ddPCR data. An interactive tool was also created and is available online to facilitate this analysis for anyone who is not comfortable with using R.
+# URL: https://github.com/daattali/ddpcr
+# BugReports: https://github.com/daattali/ddpcr/issues
+# Depends: R (>= 3.1.0)
+# Imports: DT (>= 0.2), dplyr (>= 0.5.0), ggplot2 (>= 2.2.0), lazyeval (>= 0.1.10), magrittr (>= 1.5), mixtools (>= 1.0.2), plyr (>= 1.8.1), readr (>= 0.1.0), shiny (>= 0.11.0), shinyjs (>= 0.4.0), tibble
+# Suggests: ggExtra (>= 0.3.0), graphics, grid (>= 3.2.2), gridExtra (>= 2.0.0), knitr (>= 1.7), rmarkdown, stats, testthat (>= 0.11.0), utils
+# License: MIT + file LICENSE
+# LazyData: true
+# VignetteBuilder: knitr
+# RoxygenNote: 7.1.0
+# NeedsCompilation: no
+# Packaged: 2020-06-02 02:09:55 UTC; D
+# Author: Dean Attali [aut, cre]
+# Maintainer: Dean Attali <daattali@gmail.com>
+# Repository: CRAN
+# Date/Publication: 2020-06-02 07:10:07 UTC
