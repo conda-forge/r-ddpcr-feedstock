@@ -1,4 +1,4 @@
-{% set version = '1.15' %}
+{% set version = "1.15.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ddpcr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ddpcr/ddpcr_{{ version }}.tar.gz
-  sha256: 9ad78906d8aec5ca0f57f403d15a2f09e913a726686515cd4b1d8fa7a6990213
+  sha256: 9dcd410f73982f81725fff36e01180082943ea6b8c28f27f4c6f9d5998a0d6c4
 
 build:
-  merge_build_host: True  # [win]
-  number: 2
+  merge_build_host: true  # [win]
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -35,6 +35,7 @@ requirements:
     - r-plyr >=1.8.1
     - r-readr >=0.1.0
     - r-shiny >=0.11.0
+    - r-shinydisconnect
     - r-shinyjs >=0.4.0
     - r-tibble
   run:
@@ -48,6 +49,7 @@ requirements:
     - r-plyr >=1.8.1
     - r-readr >=0.1.0
     - r-shiny >=0.11.0
+    - r-shinydisconnect
     - r-shinyjs >=0.4.0
     - r-tibble
 
@@ -59,13 +61,10 @@ test:
 about:
   home: https://github.com/daattali/ddpcr
   license: MIT
-  summary: An interface to explore, analyze, and visualize droplet digital PCR (ddPCR) data in
-    R. This is the first non-proprietary software for analyzing two-channel ddPCR data.
-    An interactive tool was also created and is available online to facilitate this
-    analysis for anyone who is not comfortable with using R.
+  summary: An interface to explore, analyze, and visualize droplet digital PCR (ddPCR) data in R. This is the first non-proprietary software for analyzing two-channel ddPCR data. An interactive tool was also created and is available online to facilitate this analysis for anyone who is not comfortable with using R.
   license_family: MIT
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
     - LICENSE
 
 extra:
