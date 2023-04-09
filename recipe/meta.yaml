@@ -35,6 +35,7 @@ requirements:
     - r-plyr >=1.8.1
     - r-readr >=0.1.0
     - r-shiny >=0.11.0
+    - r-shinydisconnect
     - r-shinyjs >=0.4.0
     - r-tibble
   run:
@@ -48,6 +49,7 @@ requirements:
     - r-plyr >=1.8.1
     - r-readr >=0.1.0
     - r-shiny >=0.11.0
+    - r-shinydisconnect
     - r-shinyjs >=0.4.0
     - r-tibble
 
