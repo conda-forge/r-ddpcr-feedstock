@@ -1,4 +1,4 @@
-{% set version = "1.15.1" %}
+{% set version = "1.15.2" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ddpcr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ddpcr/ddpcr_{{ version }}.tar.gz
-  sha256: 9dcd410f73982f81725fff36e01180082943ea6b8c28f27f4c6f9d5998a0d6c4
+  sha256: 2b8c72cafc735b6f5e316a197754f7e6ef9ba578e732660f92d2d821982f42ab
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
