@@ -1,4 +1,4 @@
-{% set version = "1.15.2" %}
+{% set version = "1.16.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ddpcr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ddpcr/ddpcr_{{ version }}.tar.gz
-  sha256: 2b8c72cafc735b6f5e316a197754f7e6ef9ba578e732660f92d2d821982f42ab
+  sha256: 698ae3b1f89495f955d063ef68fd90f3aaf2a3088f09ba199af9cdb7ee192dd2
 
 build:
-  number: 2
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
